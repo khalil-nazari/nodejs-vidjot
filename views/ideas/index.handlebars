@@ -1,0 +1,23 @@
+{{!-- loop the ideas --}}
+{{#each ideas}} 
+
+{{!-- if there is a record of idea. No need to put if() statment --}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{details}}</p>
+    <a href="/ideas/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
+
+    {{!-- Delete form --}}
+
+    <form method="POST" action="/ideas/{{id}}?_method=DELETE">
+        <input type="hidden" value="DELETE" name="_method">
+        <input type="submit" value="Delete" class="btn btn-danger btn-block">
+    </form>
+</div>
+
+{{!-- if there is not idea --}}
+{{else}}
+    <p>No ideas listed.</p>
+
+{{!-- end the loop --}}
+{{/each}}
